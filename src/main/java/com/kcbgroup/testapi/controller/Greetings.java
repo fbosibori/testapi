@@ -10,9 +10,7 @@ public class Greetings {
 		return "hello guys";
 	}
 	
-	@GetMapping("/ytyy")
-	public String helluiyo() {
-		return "hello guys";
-	}
-
+	
 }
+
+
