@@ -1,7 +1,8 @@
 package com.kcbgroup.testapi.controller;
 
-import lombok.Generated;
-import models.Account;
+import com.kcbgroup.testapi.Repo.AccountRepo;
+import com.kcbgroup.testapi.models.Account;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -10,6 +11,9 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/account/")
 public class AccountController {
+
+   @Autowired
+   AccountRepo accountRepo;
 
     @GetMapping
     public List<Account> getAccounts(){
@@ -30,9 +34,10 @@ public class AccountController {
         return faith;
     }
     @PostMapping
-    public String addAccount(@RequestBody Account AccountToAdd){
-        //TODO: Add data to db
-        String iban = AccountToAdd.getIban();
+    public String addAccount(@RequestBody Account accountToAdd){
+        accountRepo.save(accountToAdd);
+
+        String iban = accountToAdd.getIban();
         String msg = "Account "+iban+" created successfully";
         return msg;
 

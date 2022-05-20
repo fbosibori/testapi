@@ -1,14 +1,21 @@
-package models;
+package com.kcbgroup.testapi.models;
 
+import javax.persistence.*;
+
+
+@Entity
 public class Account {
-    private int Accountid;
-    private String iban;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int AccountId;
+    private String Iban;
     private String BankCode;
     private int CustomerId;
 
     public Account(int accountid, String iban, String bankCode, int customerId) {
-        Accountid = accountid;
-        this.iban = iban;
+        AccountId = accountid;
+        this.Iban = iban;
         BankCode = bankCode;
         CustomerId = customerId;
     }
@@ -16,20 +23,20 @@ public class Account {
     public Account() {
     }
 
-    public int getAccountid() {
-        return Accountid;
+    public int getAccountId() {
+        return AccountId;
     }
 
-    public void setAccountid(int accountid) {
-        Accountid = accountid;
+    public void setAccountId(int accountId) {
+        AccountId = accountId;
     }
 
     public String getIban() {
-        return iban;
+        return Iban;
     }
 
     public void setIban(String iban) {
-        this.iban = iban;
+        this.Iban = iban;
     }
 
     public String getBankCode() {
